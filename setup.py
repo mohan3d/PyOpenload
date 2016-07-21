@@ -8,8 +8,8 @@ setup(
     license='MIT',
     author='Mohaned Magdy',
     author_email='mohan3d94@gmail.com',
-    description='Just python wrapper for openload.co API',
-    long_description=open('README.txt').read(),
+    description='Just a python wrapper for openload.co API',
+    long_description=open('README.md').read(),
     install_requires=[
         'requests',
     ],
