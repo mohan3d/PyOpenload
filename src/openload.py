@@ -9,8 +9,7 @@ class OpenLoad(object):
         self.login = api_login
         self.key = api_key
         self.api_url = self.api_base_url.format(api_version=self.api_version)
-
-    # ---------------------- Helper methods ---------------------
+    
     def __get(self, url, params=None, logged_in=True, result_only=True):
         if not params:
             params = {}
@@ -21,12 +20,10 @@ class OpenLoad(object):
         response_json = requests.get(self.api_url + url, params).json()
 
         return response_json['result'] if result_only else response_json
-
-    # ------------------------- Account -------------------------
+    
     def account_info(self, result_only=True):
         return self.__get('account/info', result_only=result_only)
 
-    # ------------------------- Download -------------------------
     def prepare_download(self, file_id, result_only=True):
         return self.__get('file/dlticket', params={'file': file_id}, result_only=result_only)
 
@@ -38,15 +35,9 @@ class OpenLoad(object):
 
         return self.__get('file/dl', params)
 
-    # def download_file(self, file_id):
-    #     # ticket = self.prepare_download(file_id)['ticket']
-    #     ticket = self.prepare_download(file_id)
-    #     # return self.get_download_link(file_id, ticket)
-
     def file_info(self, file_id, result_only=True):
         return self.__get('file/info', params={'file': file_id}, result_only=result_only)
 
-    # ------------------------- Upload ---------------------------
     def upload_link(self, result_only=True, **kwargs):
         params = {key: value for key, value in kwargs.items() if value}
         return self.__get('file/ul', params=params, result_only=result_only)
@@ -57,7 +48,6 @@ class OpenLoad(object):
 
         return requests.post(upload_url, files={'upload_file': open(file_path, 'rb')}).json()
 
-    # ------------------------- Remote Upload ---------------------------
     def remote_upload(self, remote_url, result_only=True, **kwargs):
         params = {'url': remote_url}
         params.update({key: value for key, value in kwargs.items() if value})
@@ -69,13 +59,11 @@ class OpenLoad(object):
 
         return self.__get('remotedl/status', params=params, result_only=result_only)
 
-    # ------------------------- File/Folder Management -------------------
     def list_folder(self, folder_id=None, result_only=True):
         params = {'folder': folder_id} if folder_id else {}
 
         return self.__get('file/listfolder', params=params, result_only=result_only)
 
-    # ---------------------------- Converting files ----------------------
     def convert_file(self, file_id, result_only=True):
         return self.__get('file/convert', params={'file': file_id}, result_only=result_only)
 
