@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name='pyopenload',
     version='0.1dev',
-    packages=['src'],
+    packages=['openload'],
     url='https://github.com/mohan3d/PyOpenload',
     license='MIT',
     author='Mohaned Magdy',
