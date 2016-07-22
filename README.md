@@ -1,6 +1,11 @@
 # PyOpenload
 python client of the Openload.co service.
 
+## Install
+``` sh
+pip install git+https://github.com/mohan3d/PyOpenload.git
+```
+
 ## Usage
 All methods return python dictionary
 ``` python
