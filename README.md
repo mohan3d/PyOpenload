@@ -1,5 +1,5 @@
 # PyOpenload
-python client of the Openload.co service.
+python wrapper for [Openload.co](https://openload.co) [API](https://openload.co/api).
 
 ## Install
 ``` sh
