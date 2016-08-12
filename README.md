@@ -31,3 +31,6 @@ print(download_url_data['url'])
 openload.upload_file('file_path')
     
 ```
+
+## TODO
+- [ ] Tests
