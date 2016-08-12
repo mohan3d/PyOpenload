@@ -20,7 +20,16 @@ class OpenLoad(object):
         self.api_url = self.api_base_url.format(api_version=self.api_version)
 
     def __get(self, url, params=None, logged_in=True, result_only=True):
-        """
+        """Used by every other method, it makes a GET request with the given params.
+
+        Args:
+            url (str): relative path of a specific service (account_info, prepare_download, .....).
+            params (dict): contains parameters to be sent in the GET request.
+            logged_in (bool): if it is true, use api_login/api_key otherwise don't use the (anonymous).
+            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
+
+        Returns:
+            dict: results of the response of the GET request.
 
         """
         if not params:
@@ -37,8 +46,7 @@ class OpenLoad(object):
         """Requests everything account related (total used storage, reward, ...).
 
         Args:
-            result_only (bool): if it is true,
-            only results are returned otherwise the whole response is returned.
+            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
 
         Returns:
             dict: dictionary containing response data of account_info request.
