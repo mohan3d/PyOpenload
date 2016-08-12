@@ -34,7 +34,7 @@ class OpenLoad(object):
         return response_json['result'] if result_only else response_json
 
     def account_info(self, result_only=True):
-        """Requests account info of the user.
+        """Requests everything account related (total used storage, reward, ...).
 
         Args:
             result_only (bool): if it is true,
@@ -50,7 +50,7 @@ class OpenLoad(object):
         this download preparation will be used before get_download_link method.
 
         Args:
-            file_id (str): id of the file to be downloaded,
+            file_id (str): id of the file to be downloaded.
             say we have this url "https://openload.co/f/TJNMUk2hnYs/filename", TJNMUk2hnYs is the id of this file.
 
             result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
@@ -131,30 +131,100 @@ class OpenLoad(object):
         return requests.post(upload_url, files={'upload_file': open(file_path, 'rb')}).json()
 
     def remote_upload(self, remote_url, result_only=True, **kwargs):
+        """Used to make a remote file upload to openload.co
+
+        Args:
+            remote_url (str): direct link of file to be remotely downloaded.
+            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
+
+            **kwargs: kwargs may contain (folder: Folder-ID to upload to,
+                headers: additional HTTP headers, separated by newline (e.g. Cookies or HTTP Basic-Auth)).
+
+        Returns:
+            dict: dictionary containing response data of remote_upload request.
+
+        """
         params = {'url': remote_url}
         params.update({key: value for key, value in kwargs.items() if value})
 
         return self.__get('remotedl/add', params=params, result_only=result_only)
 
     def remote_upload_status(self, result_only=True, **kwargs):
+        """Checks a remote file upload to status.
+
+        Args:
+            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
+
+            **kwargs: kwargs may contain (limit: Maximum number of results (Default: 5, Maximum: 100),
+                id: Remote Upload ID)
+
+        Returns:
+            dict: dictionary containing response data of remote_upload_status request.
+
+        """
         params = {key: value for key, value in kwargs.items() if value}
 
         return self.__get('remotedl/status', params=params, result_only=result_only)
 
     def list_folder(self, folder_id=None, result_only=True):
+        """Request a list of files and folders in specified folder.
+
+        Args:
+            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
+            folder_id (str): id of the folder to be listed.
+
+        Returns:
+            dict: dictionary containing response data of list_folder request.
+
+        """
         params = {'folder': folder_id} if folder_id else {}
 
         return self.__get('file/listfolder', params=params, result_only=result_only)
 
     def convert_file(self, file_id, result_only=True):
+        """Converts previously uploaded files to a browser-streamable format (mp4 / h.264).
+
+        Args:
+            file_id (str): id of the file to be converted.
+            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
+
+        Returns:
+            dict: dictionary containing response data of convert_file request.
+
+        """
         return self.__get('file/convert', params={'file': file_id}, result_only=result_only)
 
     def running_conversions(self, folder_id=None, result_only=True):
+        """Shows running file converts by folder
+
+        Args:
+            folder_id (str): id of the folder to be listed, if not given root folder will be listed.
+            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
+
+        Returns:
+            dict: dictionary containing response data of convert_file request.
+
+        """
         params = {'folder': folder_id} if folder_id else {}
         return self.__get('file/runningconverts', params=params, result_only=result_only)
 
     def failed_conversions(self):
+        """
+        Not yet implemented, openload.co said "Coming soon ...".
+
+        Raises:
+            NotImplementedError
+        """
         raise NotImplementedError
 
     def splash_image(self, file_id, result_only=True):
+        """Shows the video splash image (thumbnail)
+
+        Args:
+            file_id (str): id of the target file.
+            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
+
+        Returns:
+            dict: dictionary containing response data of splash_image request.
+        """
         return self.__get('file/getsplash', params={'file': file_id}, result_only=result_only)
