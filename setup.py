@@ -12,5 +12,6 @@ setup(
     install_requires=[
         'requests',
     ],
+    keywords = ['openload', 'wrapper', 'api wrapper'],
     description='Just a python wrapper for openload.co API',
 )
