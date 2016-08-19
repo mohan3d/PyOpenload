@@ -1,5 +1,10 @@
 import requests
 
+from api_exceptions import (BadRequestException, BandwidthUsageExceeded,
+                            FileNotFoundException, PermissionDeniedException,
+                            ServerErrorException,
+                            UnavailableForLegalReasonsException)
+
 
 class OpenLoad(object):
     api_base_url = 'https://api.openload.co/{api_version}/'
@@ -18,6 +23,34 @@ class OpenLoad(object):
         self.login = api_login
         self.key = api_key
         self.api_url = self.api_base_url.format(api_version=self.api_version)
+
+    def __process_response(self, response_json, result_only=True):
+        """Check of incoming response, raise error if it's needed otherwise return the incoming response_json
+
+        Args:
+            response_json (dict): results of the response of the GET request.
+            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
+
+        Returns:
+            dict: results of the response of the GET request.
+        """
+        status = response_json['status']
+        msg = response_json['msg']
+
+        if status == 400:
+            raise BadRequestException(msg)
+        elif status == 403:
+            raise PermissionDeniedException(msg)
+        elif status == 404:
+            raise FileNotFoundException(msg)
+        elif status == 451:
+            raise UnavailableForLegalReasonsException(msg)
+        elif status == 509:
+            raise BandwidthUsageExceeded(msg)
+        elif status >= 500:
+            raise ServerErrorException(msg)
+
+        return response_json['result'] if result_only else response_json
 
     def __get(self, url, params=None, logged_in=True, result_only=True):
         """Used by every other method, it makes a GET request with the given params.
@@ -40,7 +73,8 @@ class OpenLoad(object):
 
         response_json = requests.get(self.api_url + url, params).json()
 
-        return response_json['result'] if result_only else response_json
+        # return response_json['result'] if result_only else response_json
+        return self.__process_response(response_json, result_only=result_only)
 
     def account_info(self, result_only=True):
         """Requests everything account related (total used storage, reward, ...).
