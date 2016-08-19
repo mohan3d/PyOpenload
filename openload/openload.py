@@ -1,9 +1,11 @@
+from __future__ import absolute_import
+
 import requests
 
-from api_exceptions import (BadRequestException, BandwidthUsageExceeded,
-                            FileNotFoundException, PermissionDeniedException,
-                            ServerErrorException,
-                            UnavailableForLegalReasonsException)
+from .api_exceptions import (BadRequestException, BandwidthUsageExceeded,
+                             FileNotFoundException, PermissionDeniedException,
+                             ServerErrorException,
+                             UnavailableForLegalReasonsException)
 
 
 class OpenLoad(object):
