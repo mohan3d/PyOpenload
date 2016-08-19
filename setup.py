@@ -8,6 +8,7 @@ setup(
     license='MIT',
     author='Mohaned Magdy',
     author_email='mohan3d94@gmail.com',
+    url = 'https://github.com/mohan3d/PyOpenload',
     install_requires=[
         'requests',
     ],
