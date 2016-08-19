@@ -3,7 +3,7 @@ python wrapper for [Openload.co](https://openload.co) [API](https://openload.co/
 
 ## Install
 ``` sh
-pip install git+https://github.com/mohan3d/PyOpenload.git
+pip install pyopenload
 ```
 
 ## Usage
