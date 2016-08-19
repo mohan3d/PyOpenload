@@ -9,6 +9,7 @@ setup(
     author='Mohaned Magdy',
     author_email='mohan3d94@gmail.com',
     url = 'https://github.com/mohan3d/PyOpenload',
+    download_url = 'https://github.com/mohan3d/PyOpenload/tarball/0.1',
     install_requires=[
         'requests',
     ],
