@@ -1,4 +1,7 @@
 # PyOpenload
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/42d0f198fcbe43daae71e21b6a3540fe)](https://www.codacy.com/app/mohan3d94/PyOpenload?utm_source=github.com&utm_medium=referral&utm_content=mohan3d/PyOpenload&utm_campaign=badger)
+
 python wrapper for [Openload.co](https://openload.co) [API](https://openload.co/api).
 
 ## Install
