@@ -26,7 +26,8 @@ class OpenLoad(object):
         self.key = api_key
         self.api_url = self.api_base_url.format(api_version=self.api_version)
 
-    def __process_response(self, response_json, result_only=True):
+    @staticmethod
+    def __process_response(response_json, result_only=True):
         """Check of incoming response, raise error if it's needed otherwise return the incoming response_json
 
         Args:
