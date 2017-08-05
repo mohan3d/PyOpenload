@@ -54,7 +54,7 @@ class OpenLoad(object):
 
     @classmethod
     def _process_response(cls, response_json, result_only=True):
-        """Check of incoming response, raise error if it's needed otherwise return the incoming response_json
+        """Check the incoming response, raise error if it's needed otherwise return the incoming response_json
 
         Args:
             response_json (dict): results of the response of the GET request.
