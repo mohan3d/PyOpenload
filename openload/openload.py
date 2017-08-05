@@ -169,12 +169,13 @@ class OpenLoad(object):
         params = {key: value for key, value in kwargs.items() if value}
         return self._get('file/ul', params=params, result_only=result_only)
 
-    def upload_file(self, file_path, **kwargs):
+    def upload_file(self, file_path, result_only=True, **kwargs):
         """Calls upload_link request to get valid url, then it makes a post request with given file to be uploaded.
         No need to call upload_link explicitly since upload_file calls it.
 
         Args:
             file_path (str): full path of the file to be uploaded.
+            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
 
             **kwargs: kwargs may contain (folder: Folder-ID to upload to,
                 sha1: Expected sha1 If sha1 of uploaded file doesn't match this value upload fails,
@@ -183,10 +184,13 @@ class OpenLoad(object):
         Returns:
             dict: dictionary containing response of upload_file request.
         """
-        response = self.upload_link(**kwargs)
-        upload_url = response['url']
+        upload_url_response_json = self.upload_link(**kwargs)
+        upload_url = upload_url_response_json['url']
 
-        return requests.post(upload_url, files={'upload_file': open(file_path, 'rb')}).json()
+        response_json = requests.post(upload_url,
+                                      files={'upload_file': open(file_path, 'rb')}).json()
+
+        return response_json['result'] if result_only else response_json
 
     def remote_upload(self, remote_url, result_only=True, **kwargs):
         """Used to make a remote file upload to openload.co
