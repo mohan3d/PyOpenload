@@ -26,16 +26,15 @@ class OpenLoad(object):
         self.key = api_key
         self.api_url = self.api_base_url.format(api_version=self.api_version)
 
-    @staticmethod
-    def _process_response(response_json, result_only=True):
-        """Check of incoming response, raise error if it's needed otherwise return the incoming response_json
+    @classmethod
+    def _check_status(cls, response_json):
+        """Check the status of the incoming response, raise exception if status is not 200.
 
         Args:
             response_json (dict): results of the response of the GET request.
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
 
         Returns:
-            dict: results of the response of the GET request.
+           None
         """
         status = response_json['status']
         msg = response_json['msg']
@@ -52,6 +51,20 @@ class OpenLoad(object):
             raise BandwidthUsageExceeded(msg)
         elif status >= 500:
             raise ServerErrorException(msg)
+
+    @classmethod
+    def _process_response(cls, response_json, result_only=True):
+        """Check of incoming response, raise error if it's needed otherwise return the incoming response_json
+
+        Args:
+            response_json (dict): results of the response of the GET request.
+            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
+
+        Returns:
+            dict: results of the response of the GET request.
+        """
+
+        cls._check_status(response_json)
 
         return response_json['result'] if result_only else response_json
 
