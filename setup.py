@@ -1,17 +1,37 @@
-from distutils.core import setup
+from codecs import open
+from os import path
+
+from setuptools import setup, find_packages
+
+here = path.abspath(path.dirname(__file__))
+
+with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name='pyopenload',
-    version='0.3',
-    packages=['openload'],
+    version='0.4',
+    description='Python wrapper for openload.co API',
+    long_description=long_description,
     url='https://github.com/mohan3d/PyOpenload',
-    license='MIT',
     author='Mohaned Magdy',
     author_email='mohan3d94@gmail.com',
-    download_url = 'https://github.com/mohan3d/PyOpenload/tarball/0.3',
-    install_requires=[
-        'requests',
+    license='MIT',
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'Topic :: Internet :: WWW/HTTP',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
-    keywords = ['openload', 'wrapper', 'api wrapper'],
-    description='Just a python wrapper for openload.co API',
+
+    keywords=['openload', 'wrapper', 'api', 'api client'],
+    packages=find_packages(exclude=['docs', 'tests*']),
+    install_requires=['requests>=2.18.3'],
 )
