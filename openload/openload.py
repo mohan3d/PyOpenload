@@ -65,7 +65,6 @@ class OpenLoad(object):
         """
 
         cls._check_status(response_json)
-
         return response_json['result'] if result_only else response_json
 
     def _get(self, url, params=None, logged_in=True, result_only=True):
@@ -190,6 +189,7 @@ class OpenLoad(object):
         response_json = requests.post(upload_url,
                                       files={'upload_file': open(file_path, 'rb')}).json()
 
+        self._check_status(response_json)
         return response_json['result'] if result_only else response_json
 
     def remote_upload(self, remote_url, result_only=True, **kwargs):
