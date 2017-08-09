@@ -10,7 +10,9 @@ Welcome to PyOpenload's documentation!
    :maxdepth: 2
    :caption: Contents:
    
-   intro
+   overview
+   download
+   install
 
 
 Indices and tables
