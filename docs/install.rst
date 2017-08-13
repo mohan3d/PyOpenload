@@ -33,3 +33,12 @@ Github
 
 	.. [#] Change directory to :samp:`PyOpenload`
 	.. [#] Run :samp:`python setup.py install`
+
+
+Requirements
+============
+
+Requests
+--------
+
+`requests <http://docs.python-requests.org/>`_ is the only required dependency.
