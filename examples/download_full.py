@@ -2,6 +2,7 @@ from __future__ import print_function
 
 from openload import OpenLoad
 
+
 def solve_captcha(captcha_url):
     """Return solved captcha string"""
     pass
