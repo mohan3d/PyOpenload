@@ -44,3 +44,10 @@ Full example
 .. literalinclude:: ../examples/download_full.py
    :linenos:
 
+File Info
+---------
+
+Check the status of a file (id, status, name, size, sha1, content_type).
+
+.. literalinclude:: ../examples/file_info.py
+   :linenos:
