@@ -33,3 +33,14 @@ Generate a download link, after generating a download ticket.
 
 .. literalinclude:: ../examples/download_link.py
    :linenos:
+
+Full example
+------------
+
+1) Generate a download token.
+2) Solve captcha if needed.
+3) Generate direct download url.
+
+.. literalinclude:: ../examples/download_full.py
+   :linenos:
+
