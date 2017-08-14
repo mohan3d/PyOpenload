@@ -51,3 +51,23 @@ Check the status of a file (id, status, name, size, sha1, content_type).
 
 .. literalinclude:: ../examples/file_info.py
    :linenos:
+
+Upload
+======
+
+Get an Upload URL
+-----------------
+
+You may need to use this method only if you want to re-implement :samp:`upload_file` in a different way.
+
+Generate upload url, will be used to upload a file.
+
+.. literalinclude:: ../examples/upload_link.py
+   :linenos:
+
+Upload File
+-----------
+
+.. literalinclude:: ../examples/upload_link.py
+   :linenos:
+
