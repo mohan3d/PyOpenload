@@ -1,5 +1,5 @@
 ========
-Tutorial
+Examples
 ========
 
 :samp:`username` and :samp:`key` can be found in `openload user settings <https://openload.co/account#usersettings>`_.

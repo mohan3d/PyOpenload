@@ -13,7 +13,7 @@ Welcome to PyOpenload's documentation!
    overview
    download
    install
-   tutorial
+   examples
 
 
 Indices and tables
