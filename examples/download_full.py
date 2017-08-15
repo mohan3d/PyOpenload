@@ -2,11 +2,6 @@ from __future__ import print_function
 
 from openload import OpenLoad
 
-
-def solve_captcha(captcha_url):
-    """Return solved captcha string"""
-    pass
-
 username = 'FTP Username/API Login'
 key = 'FTP Password/API Key'
 file_id = 'Id of the file will be downloaded'
