@@ -107,11 +107,28 @@ Converting files
 Convert a file
 --------------
 
+Convert previously uploaded file to a browser-streamable format :samp:`mp4 / h.264`
+
+.. literalinclude:: ../examples/convert_file.py
+
+
 Show running file converts
 --------------------------
+
+List all running conversions.
+
+.. literalinclude:: ../examples/running_converts.py
+
 
 Show failed file converts
 -------------------------
 
+Coming soon ... (Not yet implemented by openload.co API).
+
+
 Get splash image
 ----------------
+
+Get a download url of splash image for a specific uploaded file.
+
+.. literalinclude:: ../examples/splash_image.py
