@@ -6,6 +6,6 @@ username = 'FTP Username/API Login'
 key = 'FTP Password/API Key'
 
 openload = OpenLoad(username, key)
-resp = openload.list_folder()
+resp = openload.running_conversions(file_id)
 
 print(resp)
