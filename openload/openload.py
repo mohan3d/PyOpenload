@@ -114,10 +114,20 @@ class OpenLoad(object):
 
         Args:
             file_id (str): id of the file to be downloaded.
-            say we have this url "https://openload.co/f/TJNMUk2hnYs/filename", TJNMUk2hnYs is the id of this file.
+                           say we have this url "https://openload.co/f/TJNMUk2hnYs/filename",
+                           TJNMUk2hnYs is the id of this file.
 
         Returns:
-            dict: dictionary containing response of prepare_download request.
+            dict: dictionary containing (ticket, captcha info, ...).
+
+                  {
+                    "ticket": "72fA-_Lq8Ak~~1440353112~n~~0~nXtN3RI-nsEa28Iq",
+                    "captcha_url": "https://openload.co/dlcaptcha/b92eY_nfjV4.png",
+                    "captcha_w": 140,
+                    "captcha_h": 70,
+                    "wait_time": 10,
+                    "valid_until": "2015-08-23 18:20:13"
+                 }
         """
         return self._get('file/dlticket', params={'file': file_id})
 
