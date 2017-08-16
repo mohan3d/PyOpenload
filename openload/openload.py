@@ -245,7 +245,21 @@ class OpenLoad(object):
             folder_id (str): id of the folder to be listed, if not given root folder will be listed.
 
         Returns:
-            dict: dictionary containing response data of convert_file request.
+            list: list of dictionaries, each dictionary represents a file conversion info.
+
+            [
+                {
+                  "name": "Geysir.AVI",
+                  "id": "3565411",
+                  "status": "pending",
+                  "last_update": "2015-08-23 19:41:40",
+                  "progress": 0.32,
+                  "retries": "0",
+                  "link": "https://openload.co/f/f02JFG293J8/Geysir.AVI",
+                  "linkextid": "f02JFG293J8"
+                },
+                ....
+            ]
 
         """
         params = {'folder': folder_id} if folder_id else {}
