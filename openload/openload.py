@@ -53,7 +53,7 @@ class OpenLoad(object):
             raise ServerErrorException(msg)
 
     @classmethod
-    def _process_response(cls, response_json, result_only=True):
+    def _process_response(cls, response_json):
         """Check the incoming response, raise error if it's needed otherwise return the incoming response_json
 
         Args:
@@ -65,9 +65,9 @@ class OpenLoad(object):
         """
 
         cls._check_status(response_json)
-        return response_json['result'] if result_only else response_json
+        return response_json['result']
 
-    def _get(self, url, params=None, logged_in=True, result_only=True):
+    def _get(self, url, params=None, logged_in=True):
         """Used by every other method, it makes a GET request with the given params.
 
         Args:
@@ -88,10 +88,10 @@ class OpenLoad(object):
 
         response_json = requests.get(self.api_url + url, params).json()
 
-        # return response_json['result'] if result_only else response_json
-        return self._process_response(response_json, result_only=result_only)
+        # return response_json['result']
+        return self._process_response(response_json)
 
-    def account_info(self, result_only=True):
+    def account_info(self):
         """Requests everything account related (total used storage, reward, ...).
 
         Args:
@@ -100,9 +100,9 @@ class OpenLoad(object):
         Returns:
             dict: dictionary containing response data of account_info request.
         """
-        return self._get('account/info', result_only=result_only)
+        return self._get('account/info')
 
-    def prepare_download(self, file_id, result_only=True):
+    def prepare_download(self, file_id):
         """Makes a request to prepare for file download,
         this download preparation will be used before get_download_link method.
 
@@ -115,7 +115,7 @@ class OpenLoad(object):
         Returns:
             dict: dictionary containing response of prepare_download request.
         """
-        return self._get('file/dlticket', params={'file': file_id}, result_only=result_only)
+        return self._get('file/dlticket', params={'file': file_id})
 
     def get_download_link(self, file_id, ticket, captcha_response=None):
         """Requests direct download link for requested file,
@@ -140,7 +140,7 @@ class OpenLoad(object):
 
         return self._get('file/dl', params)
 
-    def file_info(self, file_id, result_only=True):
+    def file_info(self, file_id):
         """Used to request info for a specific file, info like size, name, .....
 
         Args:
@@ -150,9 +150,9 @@ class OpenLoad(object):
         Returns:
             dict: dictionary containing response of file_info request.
         """
-        return self._get('file/info', params={'file': file_id}, result_only=result_only)
+        return self._get('file/info', params={'file': file_id})
 
-    def upload_link(self, result_only=True, **kwargs):
+    def upload_link(self, **kwargs):
         """Makes a request to prepare for file upload.
 
         Args:
@@ -166,9 +166,9 @@ class OpenLoad(object):
             dict: dictionary containing response of upload_link request.
         """
         params = {key: value for key, value in kwargs.items() if value}
-        return self._get('file/ul', params=params, result_only=result_only)
+        return self._get('file/ul', params=params)
 
-    def upload_file(self, file_path, result_only=True, **kwargs):
+    def upload_file(self, file_path, **kwargs):
         """Calls upload_link request to get valid url, then it makes a post request with given file to be uploaded.
         No need to call upload_link explicitly since upload_file calls it.
 
@@ -190,9 +190,9 @@ class OpenLoad(object):
                                       files={'upload_file': open(file_path, 'rb')}).json()
 
         self._check_status(response_json)
-        return response_json['result'] if result_only else response_json
+        return response_json['result']
 
-    def remote_upload(self, remote_url, result_only=True, **kwargs):
+    def remote_upload(self, remote_url, **kwargs):
         """Used to make a remote file upload to openload.co
 
         Args:
@@ -209,9 +209,9 @@ class OpenLoad(object):
         params = {'url': remote_url}
         params.update({key: value for key, value in kwargs.items() if value})
 
-        return self._get('remotedl/add', params=params, result_only=result_only)
+        return self._get('remotedl/add', params=params)
 
-    def remote_upload_status(self, result_only=True, **kwargs):
+    def remote_upload_status(self, **kwargs):
         """Checks a remote file upload to status.
 
         Args:
@@ -226,9 +226,9 @@ class OpenLoad(object):
         """
         params = {key: value for key, value in kwargs.items() if value}
 
-        return self._get('remotedl/status', params=params, result_only=result_only)
+        return self._get('remotedl/status', params=params)
 
-    def list_folder(self, folder_id=None, result_only=True):
+    def list_folder(self, folder_id=None):
         """Request a list of files and folders in specified folder.
 
         Args:
@@ -241,9 +241,9 @@ class OpenLoad(object):
         """
         params = {'folder': folder_id} if folder_id else {}
 
-        return self._get('file/listfolder', params=params, result_only=result_only)
+        return self._get('file/listfolder', params=params)
 
-    def convert_file(self, file_id, result_only=True):
+    def convert_file(self, file_id):
         """Converts previously uploaded files to a browser-streamable format (mp4 / h.264).
 
         Args:
@@ -254,9 +254,9 @@ class OpenLoad(object):
             dict: dictionary containing response data of convert_file request.
 
         """
-        return self._get('file/convert', params={'file': file_id}, result_only=result_only)
+        return self._get('file/convert', params={'file': file_id})
 
-    def running_conversions(self, folder_id=None, result_only=True):
+    def running_conversions(self, folder_id=None):
         """Shows running file converts by folder
 
         Args:
@@ -268,7 +268,7 @@ class OpenLoad(object):
 
         """
         params = {'folder': folder_id} if folder_id else {}
-        return self._get('file/runningconverts', params=params, result_only=result_only)
+        return self._get('file/runningconverts', params=params)
 
     def failed_conversions(self):
         """
@@ -279,7 +279,7 @@ class OpenLoad(object):
         """
         raise NotImplementedError
 
-    def splash_image(self, file_id, result_only=True):
+    def splash_image(self, file_id):
         """Shows the video splash image (thumbnail)
 
         Args:
@@ -289,4 +289,4 @@ class OpenLoad(object):
         Returns:
             dict: dictionary containing response data of splash_image request.
         """
-        return self._get('file/getsplash', params={'file': file_id}, result_only=result_only)
+        return self._get('file/getsplash', params={'file': file_id})
