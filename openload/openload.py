@@ -168,10 +168,30 @@ class OpenLoad(object):
         """Used to request info for a specific file, info like size, name, .....
 
         Args:
-            file_id (str): id of the file to be downloaded.
+            file_id (str): File-ID(s), single file or comma-separated (max. 50)
 
         Returns:
-            dict: dictionary containing response of file_info request.
+            dict: dictionary containing file(s) info, each key represents a file_id.
+
+                  {
+                     "72fA-_Lq8Ak3": {
+                        "id": "72fA-_Lq8Ak3",
+                        "status": 200,
+                        "name": "The quick brown fox.txt",
+                        "size": 123456789012,
+                        "sha1": "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12",
+                        "content_type": "plain/text",
+                     },
+                     "72fA-_Lq8Ak4": {
+                        "id": "72fA-_Lq8Ak4",
+                        "status": 500,
+                        "name": "The quick brown fox.txt",
+                        "size": false,
+                        "sha1": "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12",
+                        "content_type": "plain/text",
+                     },
+                     ...
+                   }
         """
         return self._get('file/info', params={'file': file_id})
 
