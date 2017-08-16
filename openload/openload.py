@@ -91,7 +91,20 @@ class OpenLoad(object):
         """Requests everything account related (total used storage, reward, ...).
 
         Returns:
-            dict: dictionary containing response data of account_info request.
+            dict: dictionary containing account related info.
+
+                  {
+                    "extid": "extuserid",
+                    "email": "jeff@openload.io",
+                    "signup_at": "2015-01-09 23:59:54",
+                    "storage_left": -1,
+                    "storage_used": "32922117680",
+                    "traffic": {
+                      "left": -1,
+                      "used_24h": 0
+                    },
+                    "balance": 0
+                  }
         """
         return self._get('account/info')
 
