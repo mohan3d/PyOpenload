@@ -233,7 +233,7 @@ class OpenLoad(object):
             file_id (str): id of the file to be converted.
 
         Returns:
-            dict: dictionary containing response data of convert_file request.
+            bool: True if conversion started, otherwise False.
 
         """
         return self._get('file/convert', params={'file': file_id})
