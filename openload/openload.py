@@ -145,7 +145,17 @@ class OpenLoad(object):
             this is the solution of the captcha.
 
         Returns:
-            str: direct download link for the requested file.
+            dict: dictionary containing (file info, download url, ...).
+
+                  {
+                    "name": "The quick brown fox.txt",
+                    "size": 12345,
+                    "sha1": "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12",
+                    "content_type": "plain/text",
+                    "upload_at": "2011-01-26 13:33:37",
+                    "url": "https://abvzps.example.com/dl/l/4spxX_-cSO4/The+quick+brown+fox.txt",
+                    "token": "4spxX_-cSO4"
+                  }
         """
         params = {'ticket': ticket, 'file': file_id}
 
