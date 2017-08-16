@@ -273,7 +273,8 @@ class OpenLoad(object):
         """Shows running file converts by folder
 
         Args:
-            folder_id (str): id of the folder to be listed, if not given `Home` folder will be listed.
+            folder_id (str): id of the folder to list conversions of files exist in it,
+                             if not provided `Home` folder will be used.
 
         Returns:
             list: list of dictionaries, each dictionary represents a file conversion info.
