@@ -216,10 +216,41 @@ class OpenLoad(object):
         """Request a list of files and folders in specified folder.
 
         Args:
-            folder_id (str): id of the folder to be listed.
+            folder_id (str): id of the folder to be listed if not provided `Home` folder will be listed.
 
         Returns:
-            dict: dictionary containing response data of list_folder request.
+            dict: dictionary containing only two keys ("folders", "files"),
+                each key represents a list of dictionaries.
+
+            {
+                "folders": [
+                  {
+                    "id": "5144",
+                    "name": ".videothumb"
+                  },
+                  {
+                    "id": "5792",
+                    "name": ".subtitles"
+                  },
+                  ...
+                ],
+                "files": [
+                  {
+                    "name": "big_buck_bunny.mp4.mp4",
+                    "sha1": "c6531f5ce9669d6547023d92aea4805b7c45d133",
+                    "folderid": "4258",
+                    "upload_at": "1419791256",
+                    "status": "active",
+                    "size": "5114011",
+                    "content_type": "video/mp4",
+                    "download_count": "48",
+                    "cstatus": "ok",
+                    "link": "https://openload.co/f/UPPjeAk--30/big_buck_bunny.mp4.mp4",
+                    "linkextid": "UPPjeAk--30"
+                  },
+                  ...
+                ]
+            }
 
         """
         params = {'folder': folder_id} if folder_id else {}
