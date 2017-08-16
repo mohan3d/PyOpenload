@@ -310,7 +310,7 @@ class OpenLoad(object):
         return self._get('file/listfolder', params=params)
 
     def rename_folder(self, folder_id, name):
-        """Renames folder using the provided folder_id and name.
+        """Sets a new name for a folders
 
         Args:
             folder_id (str): id of the folder to be renamed.
@@ -323,7 +323,7 @@ class OpenLoad(object):
         return self._get('file/renamefolder', params={'folder': folder_id, 'name': name})
 
     def rename_file(self, file_id, name):
-        """Renames file using the provided file_id and name.
+        """Sets a new name for a file
 
         Args:
             file_id (str): id of the file to be renamed.
