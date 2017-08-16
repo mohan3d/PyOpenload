@@ -21,6 +21,7 @@ class OpenLoad(object):
 
         Returns:
             None
+
         """
         self.login = api_login
         self.key = api_key
@@ -35,6 +36,7 @@ class OpenLoad(object):
 
         Returns:
            None
+
         """
         status = response_json['status']
         msg = response_json['msg']
@@ -61,6 +63,7 @@ class OpenLoad(object):
 
         Returns:
             dict: results of the response of the GET request.
+
         """
 
         cls._check_status(response_json)
@@ -105,6 +108,7 @@ class OpenLoad(object):
                     },
                     "balance": 0
                   }
+
         """
         return self._get('account/info')
 
@@ -128,6 +132,7 @@ class OpenLoad(object):
                     "wait_time": 10,
                     "valid_until": "2015-08-23 18:20:13"
                  }
+
         """
         return self._get('file/dlticket', params={'file': file_id})
 
@@ -156,6 +161,7 @@ class OpenLoad(object):
                     "url": "https://abvzps.example.com/dl/l/4spxX_-cSO4/The+quick+brown+fox.txt",
                     "token": "4spxX_-cSO4"
                   }
+
         """
         params = {'ticket': ticket, 'file': file_id}
 
@@ -192,6 +198,7 @@ class OpenLoad(object):
                      },
                      ...
                    }
+
         """
         return self._get('file/info', params={'file': file_id})
 
@@ -205,6 +212,7 @@ class OpenLoad(object):
 
         Returns:
             dict: dictionary containing response of upload_link request.
+
         """
         params = {key: value for key, value in kwargs.items() if value}
         return self._get('file/ul', params=params)
@@ -222,6 +230,7 @@ class OpenLoad(object):
 
         Returns:
             dict: dictionary containing response of upload_file request.
+
         """
         upload_url_response_json = self.upload_link(**kwargs)
         upload_url = upload_url_response_json['url']
@@ -304,6 +313,7 @@ class OpenLoad(object):
                       ...
                     ]
                   }
+
         """
         params = {'folder': folder_id} if folder_id else {}
 
@@ -334,6 +344,18 @@ class OpenLoad(object):
 
         """
         return self._get('file/rename', params={'file': file_id, 'name': name})
+
+    def delete_file(self, file_id):
+        """Removes one of your files
+
+        Args:
+            file_id (str): id of the file to be deleted.
+
+        Returns:
+            bool: True if file is deleted, otherwise False.
+
+        """
+        return self._get('file/delete', params={'file': file_id})
 
     def convert_file(self, file_id):
         """Converts previously uploaded files to a browser-streamable format (mp4 / h.264).
@@ -370,6 +392,7 @@ class OpenLoad(object):
                     },
                     ....
                   ]
+
         """
         params = {'folder': folder_id} if folder_id else {}
         return self._get('file/runningconverts', params=params)
@@ -380,6 +403,7 @@ class OpenLoad(object):
 
         Raises:
             NotImplementedError
+
         """
         raise NotImplementedError
 
@@ -391,5 +415,6 @@ class OpenLoad(object):
 
         Returns:
             str: url for the splash image.
+
         """
         return self._get('file/getsplash', params={'file': file_id})
