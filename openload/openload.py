@@ -309,6 +309,19 @@ class OpenLoad(object):
 
         return self._get('file/listfolder', params=params)
 
+    def rename_folder(self, folder_id, name):
+        """Renames folder using the provided folder_id and name.
+
+        Args:
+            folder_id (str): id of the folder to be renamed.
+            name (str): new name for the provided folder.
+
+        Returns:
+            bool: True if folder is renamed, otherwise False.
+
+        """
+        return self._get('file/renamefolder', params={'folder': folder_id, 'name': name})
+
     def convert_file(self, file_id):
         """Converts previously uploaded files to a browser-streamable format (mp4 / h.264).
 
