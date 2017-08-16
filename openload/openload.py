@@ -220,38 +220,37 @@ class OpenLoad(object):
 
         Returns:
             dict: dictionary containing only two keys ("folders", "files"),
-                each key represents a list of dictionaries.
+                  each key represents a list of dictionaries.
 
-            {
-                "folders": [
                   {
-                    "id": "5144",
-                    "name": ".videothumb"
-                  },
-                  {
-                    "id": "5792",
-                    "name": ".subtitles"
-                  },
-                  ...
-                ],
-                "files": [
-                  {
-                    "name": "big_buck_bunny.mp4.mp4",
-                    "sha1": "c6531f5ce9669d6547023d92aea4805b7c45d133",
-                    "folderid": "4258",
-                    "upload_at": "1419791256",
-                    "status": "active",
-                    "size": "5114011",
-                    "content_type": "video/mp4",
-                    "download_count": "48",
-                    "cstatus": "ok",
-                    "link": "https://openload.co/f/UPPjeAk--30/big_buck_bunny.mp4.mp4",
-                    "linkextid": "UPPjeAk--30"
-                  },
-                  ...
-                ]
-            }
-
+                    "folders": [
+                      {
+                        "id": "5144",
+                        "name": ".videothumb"
+                      },
+                      {
+                        "id": "5792",
+                        "name": ".subtitles"
+                      },
+                      ...
+                    ],
+                    "files": [
+                      {
+                        "name": "big_buck_bunny.mp4.mp4",
+                        "sha1": "c6531f5ce9669d6547023d92aea4805b7c45d133",
+                        "folderid": "4258",
+                        "upload_at": "1419791256",
+                        "status": "active",
+                        "size": "5114011",
+                        "content_type": "video/mp4",
+                        "download_count": "48",
+                        "cstatus": "ok",
+                        "link": "https://openload.co/f/UPPjeAk--30/big_buck_bunny.mp4.mp4",
+                        "linkextid": "UPPjeAk--30"
+                      },
+                      ...
+                    ]
+                  }
         """
         params = {'folder': folder_id} if folder_id else {}
 
@@ -279,20 +278,19 @@ class OpenLoad(object):
         Returns:
             list: list of dictionaries, each dictionary represents a file conversion info.
 
-            [
-                {
-                  "name": "Geysir.AVI",
-                  "id": "3565411",
-                  "status": "pending",
-                  "last_update": "2015-08-23 19:41:40",
-                  "progress": 0.32,
-                  "retries": "0",
-                  "link": "https://openload.co/f/f02JFG293J8/Geysir.AVI",
-                  "linkextid": "f02JFG293J8"
-                },
-                ....
-            ]
-
+                  [
+                    {
+                      "name": "Geysir.AVI",
+                      "id": "3565411",
+                      "status": "pending",
+                      "last_update": "2015-08-23 19:41:40",
+                      "progress": 0.32,
+                      "retries": "0",
+                      "link": "https://openload.co/f/f02JFG293J8/Geysir.AVI",
+                      "linkextid": "f02JFG293J8"
+                    },
+                    ....
+                  ]
         """
         params = {'folder': folder_id} if folder_id else {}
         return self._get('file/runningconverts', params=params)
