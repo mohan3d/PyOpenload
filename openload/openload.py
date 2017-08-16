@@ -267,6 +267,6 @@ class OpenLoad(object):
             file_id (str): id of the target file.
 
         Returns:
-            dict: dictionary containing response data of splash_image request.
+            str: url for the splash image.
         """
         return self._get('file/getsplash', params={'file': file_id})
