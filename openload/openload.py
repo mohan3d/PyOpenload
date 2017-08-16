@@ -66,13 +66,12 @@ class OpenLoad(object):
         cls._check_status(response_json)
         return response_json['result']
 
-    def _get(self, url, params=None, logged_in=True):
+    def _get(self, url, params=None):
         """Used by every other method, it makes a GET request with the given params.
 
         Args:
             url (str): relative path of a specific service (account_info, prepare_download, .....).
             params (dict): contains parameters to be sent in the GET request.
-            logged_in (bool): if it is true, use api_login/api_key otherwise don't use (be anonymous).
 
         Returns:
             dict: results of the response of the GET request.
@@ -81,8 +80,7 @@ class OpenLoad(object):
         if not params:
             params = {}
 
-        if logged_in:
-            params.update({'login': self.login, 'key': self.key})
+        params.update({'login': self.login, 'key': self.key})
 
         response_json = requests.get(self.api_url + url, params).json()
 
