@@ -58,7 +58,6 @@ class OpenLoad(object):
 
         Args:
             response_json (dict): results of the response of the GET request.
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
 
         Returns:
             dict: results of the response of the GET request.
@@ -73,8 +72,7 @@ class OpenLoad(object):
         Args:
             url (str): relative path of a specific service (account_info, prepare_download, .....).
             params (dict): contains parameters to be sent in the GET request.
-            logged_in (bool): if it is true, use api_login/api_key otherwise don't use the (anonymous).
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
+            logged_in (bool): if it is true, use api_login/api_key otherwise don't use (be anonymous).
 
         Returns:
             dict: results of the response of the GET request.
@@ -94,9 +92,6 @@ class OpenLoad(object):
     def account_info(self):
         """Requests everything account related (total used storage, reward, ...).
 
-        Args:
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
-
         Returns:
             dict: dictionary containing response data of account_info request.
         """
@@ -109,8 +104,6 @@ class OpenLoad(object):
         Args:
             file_id (str): id of the file to be downloaded.
             say we have this url "https://openload.co/f/TJNMUk2hnYs/filename", TJNMUk2hnYs is the id of this file.
-
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
 
         Returns:
             dict: dictionary containing response of prepare_download request.
@@ -145,7 +138,6 @@ class OpenLoad(object):
 
         Args:
             file_id (str): id of the file to be downloaded.
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
 
         Returns:
             dict: dictionary containing response of file_info request.
@@ -156,8 +148,6 @@ class OpenLoad(object):
         """Makes a request to prepare for file upload.
 
         Args:
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
-
             **kwargs: kwargs may contain (folder: Folder-ID to upload to,
                 sha1: Expected sha1 If sha1 of uploaded file doesn't match this value upload fails,
                 httponly: If this is set to true, use only http upload links).
@@ -174,7 +164,6 @@ class OpenLoad(object):
 
         Args:
             file_path (str): full path of the file to be uploaded.
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
 
             **kwargs: kwargs may contain (folder: Folder-ID to upload to,
                 sha1: Expected sha1 If sha1 of uploaded file doesn't match this value upload fails,
@@ -197,7 +186,6 @@ class OpenLoad(object):
 
         Args:
             remote_url (str): direct link of file to be remotely downloaded.
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
 
             **kwargs: kwargs may contain (folder: Folder-ID to upload to,
                 headers: additional HTTP headers, separated by newline (e.g. Cookies or HTTP Basic-Auth)).
@@ -215,8 +203,6 @@ class OpenLoad(object):
         """Checks a remote file upload to status.
 
         Args:
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
-
             **kwargs: kwargs may contain (limit: Maximum number of results (Default: 5, Maximum: 100),
                 id: Remote Upload ID)
 
@@ -232,7 +218,6 @@ class OpenLoad(object):
         """Request a list of files and folders in specified folder.
 
         Args:
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
             folder_id (str): id of the folder to be listed.
 
         Returns:
@@ -248,7 +233,6 @@ class OpenLoad(object):
 
         Args:
             file_id (str): id of the file to be converted.
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
 
         Returns:
             dict: dictionary containing response data of convert_file request.
@@ -261,7 +245,6 @@ class OpenLoad(object):
 
         Args:
             folder_id (str): id of the folder to be listed, if not given root folder will be listed.
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
 
         Returns:
             dict: dictionary containing response data of convert_file request.
@@ -284,7 +267,6 @@ class OpenLoad(object):
 
         Args:
             file_id (str): id of the target file.
-            result_only (bool): if it is true, only results are returned otherwise the whole response is returned.
 
         Returns:
             dict: dictionary containing response data of splash_image request.
