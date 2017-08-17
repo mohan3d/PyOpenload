@@ -1,9 +1,9 @@
 PyOpenload |StarButton|
 =======================
 
-|Codacy Badge|
-
 python wrapper for `Openload.co`_ `API`_.
+
+|Codacy Badge| |pypi| |format| |license|
 
 Install
 -------
@@ -54,3 +54,12 @@ TODO
 
 .. |StarButton| image:: https://img.shields.io/github/stars/mohan3d/pyopenload.svg?style=social&label=Star&maxAge=3600
    :target: https://github.com/mohan3d/PyOpenload
+
+.. |pypi| image:: https://img.shields.io/pypi/v/pyopenload.svg?maxAge=3600&style=flat-square
+   :target: https://pypi.python.org/pypi/pyopenload
+
+.. |format| image:: https://img.shields.io/pypi/format/pyopenload.svg?maxAge=3600&style=flat-square
+   :target: https://pypi.python.org/pypi/pyopenload
+
+.. |license| image:: https://img.shields.io/pypi/l/pyopenload.svg?maxAge=3600&style=flat-square
+   :target: https://choosealicense.com/licenses/mit/
