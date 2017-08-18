@@ -5,10 +5,10 @@ PyOpenload is a python wrapper for `Openload.co`_ `API`_.
 
 |pypi| |format| |CodacyBadge|
 
-With PyOpenload you can manage your :sap:`openload.co` account (Access account info, Upload files, ...)
-without the need to understand how to use _Openload.co _API.
+With PyOpenload you can manage your :samp:`openload.co` account (Access account info, Upload files, ...)
+without the need to understand how to use `Openload.co`_ `API`_.
 
-Find more about what you can to do at _Openload.co _API.
+Find more about what you can to do at `Openload.co`_ `API`_.
 
 
 License |license|
