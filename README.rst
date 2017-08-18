@@ -15,8 +15,6 @@ Install
 Usage
 -----
 
-All methods return python dictionary
-
 .. code:: python
 
     from openload import OpenLoad
@@ -50,16 +48,16 @@ TODO
 .. _API: https://openload.co/api
 
 .. |StarButton| image:: https://img.shields.io/github/stars/mohan3d/pyopenload.svg?style=social&label=Star&maxAge=3600
-   :target: https://github.com/mohan3d/PyOpenload
+    :target: https://github.com/mohan3d/PyOpenload
 
 .. |pypi| image:: https://img.shields.io/pypi/v/pyopenload.svg?maxAge=3600&style=flat-square
-   :target: https://pypi.python.org/pypi/pyopenload
+    :target: https://pypi.python.org/pypi/pyopenload
 
 .. |format| image:: https://img.shields.io/pypi/format/pyopenload.svg?maxAge=3600&style=flat-square
-   :target: https://pypi.python.org/pypi/pyopenload
+    :target: https://pypi.python.org/pypi/pyopenload
 
 .. |CodacyBadge| image:: https://img.shields.io/codacy/grade/42d0f198fcbe43daae71e21b6a3540fe.svg?maxAge=3600&style=flat-square
-   :target: https://www.codacy.com/app/mohan3d94/PyOpenload?utm_source=github.com&utm_medium=referral&utm_content=mohan3d/PyOpenload&utm_campaign=badger
+    :target: https://www.codacy.com/app/mohan3d94/PyOpenload?utm_source=github.com&utm_medium=referral&utm_content=mohan3d/PyOpenload&utm_campaign=badger
 
 .. |license| image:: https://img.shields.io/pypi/l/pyopenload.svg?maxAge=3600&style=flat-square
-   :target: https://choosealicense.com/licenses/mit/
+    :target: https://choosealicense.com/licenses/mit/
