@@ -12,14 +12,14 @@ Find more about what you can to do at `Openload.co`_ `API`_.
 
 
 License |license|
-=================
+-----------------
 
 PyOpenload is released under the `MIT License <https://choosealicense.com/licenses/mit/>`_, and is fully open-source.
 See the actual LICENSE file distributed with the software for a detail of the license.
 
 
 About
-=====
+-----
 
 PyOpenload is maintained by:
   * `Mohaned Magdy <https://github.com/mohan3d>`_
