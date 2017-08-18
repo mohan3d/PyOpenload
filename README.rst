@@ -8,9 +8,10 @@ python wrapper for `Openload.co`_ `API`_.
 Install
 -------
 
-.. code:: sh
+.. code-block:: bash
 
-    pip install pyopenload
+    $ pip install pyopenload
+
 
 Usage
 -----
