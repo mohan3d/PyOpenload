@@ -170,3 +170,5 @@ texinfo_documents = [
      author, 'PyOpenload', 'One line description of project.',
      'Miscellaneous'),
 ]
+
+autodoc_member_order = 'bysource'
