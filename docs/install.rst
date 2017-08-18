@@ -28,8 +28,8 @@ Github
 
 * Clone the PyOpenload repository
 
-  ::
-    git clone https://github.com/mohan3d/PyOpenload.git
+::
+  git clone https://github.com/mohan3d/PyOpenload.git
 
 * Change directory to :samp:`PyOpenload`
 * Run :samp:`python setup.py install`
