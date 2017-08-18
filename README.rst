@@ -39,10 +39,10 @@ Usage
     openload.upload_file('file_path')
         
 
-TODO
-----
+Documentation
+-------------
 
--  [ ] Tests
+documentation is available at https://pyopenload.readthedocs.io/.
 
 .. _Openload.co: https://openload.co
 .. _API: https://openload.co/api
