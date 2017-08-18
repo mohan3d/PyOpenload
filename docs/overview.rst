@@ -6,16 +6,16 @@ PyOpenload is a python wrapper for `Openload.co`_ `API`_.
 |pypi| |format| |CodacyBadge|
 
 With PyOpenload you can manage your :samp:`openload.co` account (Access account info, Upload files, ...)
-without the need to understand how to use `Openload.co`_ `API`_.
+with no need to understand how to use `Openload.co`_ `API`_.
 
-Find more about what you can to do at `Openload.co`_ `API`_.
+Learn more about what you can do at `Openload.co`_ `API`_.
 
 
 License |license|
 -----------------
 
 PyOpenload is released under the `MIT License <https://choosealicense.com/licenses/mit/>`_, and is fully open-source.
-See the actual LICENSE file distributed with the software for a detail of the license.
+See the actual ``LICENSE`` file distributed with the software for details of the license.
 
 
 About
