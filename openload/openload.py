@@ -73,7 +73,7 @@ class OpenLoad(object):
         """Used by every other method, it makes a GET request with the given params.
 
         Args:
-            url (str): relative path of a specific service (account_info, prepare_download, .....).
+            url (str): relative path of a specific service (account_info, ...).
             params (dict): contains parameters to be sent in the GET request.
 
         Returns:
@@ -118,8 +118,6 @@ class OpenLoad(object):
 
         Args:
             file_id (str): id of the file to be downloaded.
-                           say we have this url "https://openload.co/f/TJNMUk2hnYs/filename",
-                           TJNMUk2hnYs is the id of this file.
 
         Returns:
             dict: dictionary containing (ticket, captcha info, ...). ::
@@ -143,11 +141,11 @@ class OpenLoad(object):
         Args:
             file_id (str): id of the file to be downloaded.
 
-            ticket (str): preparation ticket is found in prepare_download response,
-            this is why we need to call prepare_download before get_download_link.
+            ticket (str): preparation ticket is found in prepare_download response,\
+                          this is why we need to call prepare_download before get_download_link.
 
-            captcha_response (str): sometimes prepare_download will have captcha url to be solved first,
-            this is the solution of the captcha.
+            captcha_response (str): sometimes prepare_download will have captcha url to be solved first,\
+                                    this is the solution of the captcha.
 
         Returns:
             dict: dictionary containing (file info, download url, ...). ::
