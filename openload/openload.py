@@ -94,20 +94,20 @@ class OpenLoad(object):
         """Requests everything account related (total used storage, reward, ...).
 
         Returns:
-            dict: dictionary containing account related info.
+            dict: dictionary containing account related info. ::
 
-                  {
-                    "extid": "extuserid",
-                    "email": "jeff@openload.io",
-                    "signup_at": "2015-01-09 23:59:54",
-                    "storage_left": -1,
-                    "storage_used": "32922117680",
-                    "traffic": {
-                      "left": -1,
-                      "used_24h": 0
-                    },
-                    "balance": 0
-                  }
+                      {
+                        "extid": "extuserid",
+                        "email": "jeff@openload.io",
+                        "signup_at": "2015-01-09 23:59:54",
+                        "storage_left": -1,
+                        "storage_used": "32922117680",
+                        "traffic": {
+                          "left": -1,
+                          "used_24h": 0
+                        },
+                        "balance": 0
+                      }
 
         """
         return self._get('account/info')
@@ -122,7 +122,7 @@ class OpenLoad(object):
                            TJNMUk2hnYs is the id of this file.
 
         Returns:
-            dict: dictionary containing (ticket, captcha info, ...).
+            dict: dictionary containing (ticket, captcha info, ...). ::
 
                   {
                     "ticket": "72fA-_Lq8Ak~~1440353112~n~~0~nXtN3RI-nsEa28Iq",
@@ -150,7 +150,7 @@ class OpenLoad(object):
             this is the solution of the captcha.
 
         Returns:
-            dict: dictionary containing (file info, download url, ...).
+            dict: dictionary containing (file info, download url, ...). ::
 
                   {
                     "name": "The quick brown fox.txt",
@@ -177,7 +177,7 @@ class OpenLoad(object):
             file_id (str): File-ID(s), single file or comma-separated (max. 50)
 
         Returns:
-            dict: dictionary containing file(s) info, each key represents a file_id.
+            dict: dictionary containing file(s) info, each key represents a file_id. ::
 
                   {
                      "72fA-_Lq8Ak3": {
@@ -278,41 +278,41 @@ class OpenLoad(object):
         """Request a list of files and folders in specified folder.
 
         Args:
-            folder_id (str): id of the folder to be listed if not provided `Home` folder will be listed.
+            folder_id (str): id of the folder to be listed if not provided ``Home`` folder will be listed.
 
         Returns:
-            dict: dictionary containing only two keys ("folders", "files"),
-                  each key represents a list of dictionaries.
+            dict: dictionary containing only two keys ("folders", "files"), \
+                  each key represents a list of dictionaries. ::
 
-                  {
-                    "folders": [
                       {
-                        "id": "5144",
-                        "name": ".videothumb"
-                      },
-                      {
-                        "id": "5792",
-                        "name": ".subtitles"
-                      },
-                      ...
-                    ],
-                    "files": [
-                      {
-                        "name": "big_buck_bunny.mp4.mp4",
-                        "sha1": "c6531f5ce9669d6547023d92aea4805b7c45d133",
-                        "folderid": "4258",
-                        "upload_at": "1419791256",
-                        "status": "active",
-                        "size": "5114011",
-                        "content_type": "video/mp4",
-                        "download_count": "48",
-                        "cstatus": "ok",
-                        "link": "https://openload.co/f/UPPjeAk--30/big_buck_bunny.mp4.mp4",
-                        "linkextid": "UPPjeAk--30"
-                      },
-                      ...
-                    ]
-                  }
+                        "folders": [
+                          {
+                            "id": "5144",
+                            "name": ".videothumb"
+                          },
+                          {
+                            "id": "5792",
+                            "name": ".subtitles"
+                          },
+                          ...
+                        ],
+                        "files": [
+                          {
+                            "name": "big_buck_bunny.mp4.mp4",
+                            "sha1": "c6531f5ce9669d6547023d92aea4805b7c45d133",
+                            "folderid": "4258",
+                            "upload_at": "1419791256",
+                            "status": "active",
+                            "size": "5114011",
+                            "content_type": "video/mp4",
+                            "download_count": "48",
+                            "cstatus": "ok",
+                            "link": "https://openload.co/f/UPPjeAk--30/big_buck_bunny.mp4.mp4",
+                            "linkextid": "UPPjeAk--30"
+                          },
+                          ...
+                        ]
+                      }
 
         """
         params = {'folder': folder_id} if folder_id else {}
@@ -374,24 +374,24 @@ class OpenLoad(object):
 
         Args:
             folder_id (str): id of the folder to list conversions of files exist in it,
-                             if not provided `Home` folder will be used.
+                             if not provided ``Home`` folder will be used.
 
         Returns:
-            list: list of dictionaries, each dictionary represents a file conversion info.
+            list: list of dictionaries, each dictionary represents a file conversion info. ::
 
-                  [
-                    {
-                      "name": "Geysir.AVI",
-                      "id": "3565411",
-                      "status": "pending",
-                      "last_update": "2015-08-23 19:41:40",
-                      "progress": 0.32,
-                      "retries": "0",
-                      "link": "https://openload.co/f/f02JFG293J8/Geysir.AVI",
-                      "linkextid": "f02JFG293J8"
-                    },
-                    ....
-                  ]
+                      [
+                        {
+                          "name": "Geysir.AVI",
+                          "id": "3565411",
+                          "status": "pending",
+                          "last_update": "2015-08-23 19:41:40",
+                          "progress": 0.32,
+                          "retries": "0",
+                          "link": "https://openload.co/f/f02JFG293J8/Geysir.AVI",
+                          "linkextid": "f02JFG293J8"
+                        },
+                        ....
+                      ]
 
         """
         params = {'folder': folder_id} if folder_id else {}
