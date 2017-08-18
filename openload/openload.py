@@ -320,6 +320,9 @@ class OpenLoad(object):
     def rename_folder(self, folder_id, name):
         """Sets a new name for a folders
 
+        Note:
+            folder_id(s) can be found in list_folder return.
+
         Args:
             folder_id (str): id of the folder to be renamed.
             name (str): new name for the provided folder.
