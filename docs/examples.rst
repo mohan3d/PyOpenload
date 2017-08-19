@@ -101,6 +101,30 @@ List :samp:`Home` (The main directory).
 .. literalinclude:: ../examples/list_folder.py
 
 
+Rename Folder
+-------------
+
+Rename a specific folder.
+
+.. literalinclude:: ../examples/rename_folder.py
+
+
+Rename File
+-----------
+
+Rename a specific file.
+
+.. literalinclude:: ../examples/rename_file.py
+
+
+Delete File
+-----------
+
+Delete a specific file.
+
+.. literalinclude:: ../examples/delete_file.py
+
+
 Converting files
 ================
 
