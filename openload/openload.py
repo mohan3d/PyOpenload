@@ -74,7 +74,7 @@ class OpenLoad(object):
 
         Args:
             url (str): relative path of a specific service (account_info, ...).
-            params (dict): contains parameters to be sent in the GET request.
+            params (:obj:`dict`, optional): contains parameters to be sent in the GET request.
 
         Returns:
             dict: results of the response of the GET request.
@@ -143,8 +143,8 @@ class OpenLoad(object):
             ticket (str): preparation ticket is found in prepare_download response,\
                           this is why we need to call prepare_download before get_download_link.
 
-            captcha_response (str): sometimes prepare_download will have captcha url to be solved first,\
-                                    this is the solution of the captcha.
+            captcha_response (:obj:`str`, optional): sometimes prepare_download will have captcha url to be solved, \
+                                                     first, this is the solution of the captcha.
 
         Returns:
             dict: dictionary containing (file info, download url, ...). ::
