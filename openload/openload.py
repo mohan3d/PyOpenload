@@ -87,7 +87,6 @@ class OpenLoad(object):
 
         response_json = requests.get(self.api_url + url, params).json()
 
-        # return response_json['result']
         return self._process_response(response_json)
 
     def account_info(self):
