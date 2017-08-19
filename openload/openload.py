@@ -211,7 +211,12 @@ class OpenLoad(object):
             httponly (:obj:`bool`, optional): If this is set to true, use only http upload links.
 
         Returns:
-            dict: dictionary containing response of upload_link request.
+            dict: dictionary containing (url: will be used in actual upload, valid_until). ::
+
+                {
+                    "url": "https://1fiafqj.oloadcdn.net/uls/nZ8H3X9e0AotInbU",
+                    "valid_until": "2017-08-19 19:06:46"
+                }
 
         """
 
@@ -233,7 +238,16 @@ class OpenLoad(object):
             httponly (:obj:`bool`, optional): If this is set to true, use only http upload links.
 
         Returns:
-            dict: dictionary containing response of upload_file request.
+            dict: dictionary containing uploaded file info. ::
+
+                {
+                    "content_type": "application/zip",
+                    "id": "0yiQTPzi4Y4",
+                    "name": 'favicons.zip',
+                    "sha1": 'f2cb05663563ec1b7e75dbcd5b96d523cb78d80c',
+                    "size": '24160',
+                    "url": 'https://openload.co/f/0yiQTPzi4Y4/favicons.zip'
+                 }
 
         """
 
@@ -258,7 +272,12 @@ class OpenLoad(object):
             headers (:obj:`dict`, optional): additional HTTP headers (e.g. Cookies or HTTP Basic-Auth)
 
         Returns:
-            dict: dictionary containing response data of remote_upload request.
+            dict: dictionary containing ("id": uploaded file id, "folderid"). ::
+
+                {
+                    "id": "12",
+                    "folderid": "4248"
+                }
 
         """
 
@@ -276,7 +295,33 @@ class OpenLoad(object):
             remote_upload_id (:obj:`str`, optional): Remote Upload ID.
 
         Returns:
-            dict: dictionary containing response data of remote_upload_status request.
+            dict: dictionary containing all remote uploads, each dictionary element is a dictionary. ::
+
+                {
+                    "24": {
+                      "id": "24",
+                      "remoteurl": "http://proof.ovh.net/files/100Mio.dat",
+                      "status": "new",
+                      "folderid": "4248",
+                      "added": "2015-02-21 09:20:26",
+                      "last_update": "2015-02-21 09:20:26",
+                      "extid": False,
+                      "url": False
+                    },
+                    "22": {
+                      "id": "22",
+                      "remoteurl": "http://proof.ovh.net/files/1Gio.dat",
+                      "status": "downloading",
+                      "bytes_loaded": "823997062",
+                      "bytes_total": "1073741824",
+                      "folderid": "4248",
+                      "added": "2015-02-21 09:20:26",
+                      "last_update": "2015-02-21 09:21:56",
+                      "extid": False,
+                      "url": False
+                    },
+                    ...
+                }
 
         """
 
