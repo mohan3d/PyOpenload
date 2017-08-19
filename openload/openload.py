@@ -289,8 +289,11 @@ class OpenLoad(object):
     def list_folder(self, folder_id=None):
         """Request a list of files and folders in specified folder.
 
+        Note:
+            if folder_id is not provided, ``Home`` folder will be listed
+
         Args:
-            folder_id (str): id of the folder to be listed if not provided ``Home`` folder will be listed.
+            folder_id (:obj:`str`, optional): id of the folder to be listed.
 
         Returns:
             dict: dictionary containing only two keys ("folders", "files"), \
@@ -387,9 +390,11 @@ class OpenLoad(object):
     def running_conversions(self, folder_id=None):
         """Shows running file converts by folder
 
+        Note:
+            If folder_id is not provided, ``Home`` folder will be used.
+
         Args:
-            folder_id (str): id of the folder to list conversions of files exist in it,
-                             if not provided ``Home`` folder will be used.
+            folder_id (:obj:`str`, optional): id of the folder to list conversions of files exist in it.
 
         Returns:
             list: list of dictionaries, each dictionary represents a file conversion info. ::
