@@ -200,37 +200,45 @@ class OpenLoad(object):
         """
         return self._get('file/info', params={'file': file_id})
 
-    def upload_link(self, **kwargs):
+    def upload_link(self, folder_id=None, sha1=None, httponly=False):
         """Makes a request to prepare for file upload.
 
+        Note:
+            If folder_id is not provided, it will make and upload link to the ``Home`` folder.
+
         Args:
-            **kwargs: kwargs may contain (folder: Folder-ID to upload to,
-                sha1: Expected sha1 If sha1 of uploaded file doesn't match this value upload fails,
-                httponly: If this is set to true, use only http upload links).
+            folder_id (:obj:`str`, optional): folder-ID to upload to.
+            sha1 (:obj:`str`, optional): expected sha1 If sha1 of uploaded file doesn't match this value, upload fails.
+            httponly (:obj:`bool`, optional): If this is set to true, use only http upload links.
 
         Returns:
             dict: dictionary containing response of upload_link request.
 
         """
+
+        kwargs = {'folder': folder_id, 'sha1': sha1, 'httponly': httponly}
         params = {key: value for key, value in kwargs.items() if value}
         return self._get('file/ul', params=params)
 
-    def upload_file(self, file_path, **kwargs):
+    def upload_file(self, file_path, folder_id=None, sha1=None, httponly=False):
         """Calls upload_link request to get valid url, then it makes a post request with given file to be uploaded.
         No need to call upload_link explicitly since upload_file calls it.
 
+        Note:
+            If folder_id is not provided, the file will be uploaded to ``Home`` folder.
+
         Args:
             file_path (str): full path of the file to be uploaded.
-
-            **kwargs: kwargs may contain (folder: Folder-ID to upload to,
-                sha1: Expected sha1 If sha1 of uploaded file doesn't match this value upload fails,
-                httponly: If this is set to true, use only http upload links).
+            folder_id (:obj:`str`, optional): folder-ID to upload to.
+            sha1 (:obj:`str`, optional): expected sha1 If sha1 of uploaded file doesn't match this value, upload fails.
+            httponly (:obj:`bool`, optional): If this is set to true, use only http upload links.
 
         Returns:
             dict: dictionary containing response of upload_file request.
 
         """
-        upload_url_response_json = self.upload_link(**kwargs)
+
+        upload_url_response_json = self.upload_link(folder_id=folder_id, sha1=sha1, httponly=httponly)
         upload_url = upload_url_response_json['url']
 
         response_json = requests.post(upload_url,
@@ -239,35 +247,41 @@ class OpenLoad(object):
         self._check_status(response_json)
         return response_json['result']
 
-    def remote_upload(self, remote_url, **kwargs):
+    def remote_upload(self, remote_url, folder_id=None, headers=None):
         """Used to make a remote file upload to openload.co
+
+        Note:
+            If folder_id is not provided, the file will be uploaded to ``Home`` folder.
 
         Args:
             remote_url (str): direct link of file to be remotely downloaded.
-
-            **kwargs: kwargs may contain (folder: Folder-ID to upload to,
-                headers: additional HTTP headers, separated by newline (e.g. Cookies or HTTP Basic-Auth)).
+            folder_id (:obj:`str`, optional): folder-ID to upload to.
+            headers (:obj:`dict`, optional): additional HTTP headers (e.g. Cookies or HTTP Basic-Auth)
 
         Returns:
             dict: dictionary containing response data of remote_upload request.
 
         """
+
+        kwargs = {'folder': folder_id, 'headers': headers}
         params = {'url': remote_url}
         params.update({key: value for key, value in kwargs.items() if value})
 
         return self._get('remotedl/add', params=params)
 
-    def remote_upload_status(self, **kwargs):
+    def remote_upload_status(self, limit=None, remote_upload_id=None):
         """Checks a remote file upload to status.
 
         Args:
-            **kwargs: kwargs may contain (limit: Maximum number of results (Default: 5, Maximum: 100),
-                id: Remote Upload ID)
+            limit (:obj:`int`, optional): Maximum number of results (Default: 5, Maximum: 100).
+            remote_upload_id (:obj:`str`, optional): Remote Upload ID.
 
         Returns:
             dict: dictionary containing response data of remote_upload_status request.
 
         """
+
+        kwargs = {'limit': limit, 'id': remote_upload_id}
         params = {key: value for key, value in kwargs.items() if value}
 
         return self._get('remotedl/status', params=params)
