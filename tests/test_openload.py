@@ -143,5 +143,15 @@ class TestOpenLoad(unittest.TestCase):
         succeeded = self.ol.delete_file(file_id)
         self.assertTrue(succeeded)
 
+    def test_running_conversions_without_folder(self):
+        conversions = self.ol.running_conversions()
+        self.assertIsInstance(conversions, list)
+
+    def test_running_conversions_with_folder(self):
+        folder_id = self.get_folder_id()
+        conversions = self.ol.running_conversions(folder_id=folder_id)
+        self.assertIsInstance(conversions, list)
+
+
 if __name__ == '__main__':
     unittest.main()
