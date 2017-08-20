@@ -113,6 +113,13 @@ class TestOpenLoad(unittest.TestCase):
         for key in keys:
             self.assertIn(key, prepare_info)
 
+    def test_list_folder_without_folder(self):
+        folder_info = self.ol.list_folder()
+
+        self.assertIsInstance(folder_info, dict)
+        self.assertIn('folders', folder_info)
+        self.assertIn('files', folder_info)
+
 
 if __name__ == '__main__':
     unittest.main()
