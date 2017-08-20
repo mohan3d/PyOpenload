@@ -27,7 +27,7 @@ class TestOpenLoad(unittest.TestCase):
             self.ol.delete_file(file_id)
 
     def get_folder_id(self):
-        raise NotImplementedError
+        return ""
 
     def test_account_info(self):
         account_info = self.ol.account_info()
@@ -98,6 +98,20 @@ class TestOpenLoad(unittest.TestCase):
             self.assertIsInstance(file_info, dict)
             self.assertIn(file_id, files_info)
             self.assertIsInstance(files_info.get(file_id), dict)
+
+    def test_prepare_download(self):
+        file_info = self.ol.upload_file(self.file_path)
+        file_id = file_info.get('id')
+        keys = ["ticket", "captcha_url", "captcha_w", "captcha_h", "wait_time", "valid_until"]
+
+        self.uploaded_files_ids.append(file_id)
+
+        prepare_info = self.ol.prepare_download(file_id)
+
+        self.assertIsInstance(prepare_info, dict)
+
+        for key in keys:
+            self.assertIn(key, prepare_info)
 
 
 if __name__ == '__main__':
