@@ -152,6 +152,10 @@ class TestOpenLoad(unittest.TestCase):
         conversions = self.ol.running_conversions(folder_id=folder_id)
         self.assertIsInstance(conversions, list)
 
+    def test_remote_upload_status(self):
+        remote_upload_status_info = self.ol.remote_upload_status()
+        self.assertIsInstance(remote_upload_status_info, dict)
+
 
 if __name__ == '__main__':
     unittest.main()
