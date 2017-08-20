@@ -120,6 +120,28 @@ class TestOpenLoad(unittest.TestCase):
         self.assertIn('folders', folder_info)
         self.assertIn('files', folder_info)
 
+    def test_list_folder_with_folder(self):
+        folder_id = self.get_folder_id()
+        folder_info = self.ol.list_folder(folder_id)
+
+        self.assertIsInstance(folder_info, dict)
+        self.assertIn('folders', folder_info)
+        self.assertIn('files', folder_info)
+
+    def test_rename_file(self):
+        file_info = self.ol.upload_file(self.file_path)
+        file_id = file_info.get('id')
+        self.uploaded_files_ids.append(file_id)
+
+        succeeded = self.ol.rename_file(file_id, 'NEW_NAME')
+        self.assertTrue(succeeded)
+
+    def test_delete_file(self):
+        file_info = self.ol.upload_file(self.file_path)
+        file_id = file_info.get('id')
+
+        succeeded = self.ol.delete_file(file_id)
+        self.assertTrue(succeeded)
 
 if __name__ == '__main__':
     unittest.main()
