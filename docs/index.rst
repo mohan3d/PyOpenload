@@ -14,6 +14,7 @@ Welcome to PyOpenload's documentation!
    download
    install
    reference
+   test
    examples
 
 
