@@ -27,7 +27,11 @@ class TestOpenLoad(unittest.TestCase):
             self.ol.delete_file(file_id)
 
     def get_folder_id(self):
-        return ""
+        home_folder_info = self.ol.list_folder()
+        folders = home_folder_info.get('folders')
+
+        if folders:
+            return folders[-1].get('id')
 
     def test_account_info(self):
         account_info = self.ol.account_info()
