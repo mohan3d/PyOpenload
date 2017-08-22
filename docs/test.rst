@@ -27,7 +27,15 @@ Testing
 
 In the root directory of PyOpenload.
 
+**Python 3**
+
 .. code-block:: bash
 
     $ python -m unittest tests/test_openload.py
 
+
+**Python 2**
+
+.. code-block:: bash
+
+    $ python -m unittest tests.test_openload
