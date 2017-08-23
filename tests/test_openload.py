@@ -63,16 +63,14 @@ class TestOpenLoad(unittest.TestCase):
     def test_upload_file_with_folder(self):
         folder_id = self.get_folder_id()
         file_info = self.ol.upload_file(self.file_path, folder_id=folder_id)
-        keys = ['content_type', 'id', 'name', 'sha1', 'size', 'url']
+        file_id = file_info.get('id')
 
-        self.uploaded_files_ids.append(file_info.get('id'))
+        self.uploaded_files_ids.append(file_id)
 
-        self.assertIsInstance(file_info, dict)
+        folder_info = self.ol.list_folder(folder_id)
+        file_ids = [f.get('linkextid') for f in folder_info.get('files')]
 
-        for key in keys:
-            self.assertIn(key, file_info)
-
-        self.uploaded_files_ids.append(file_info.get('id'))
+        self.assertIn(file_id, file_ids)
 
     def test_file_info_single_file(self):
         uploaded_file_info = self.ol.upload_file(self.file_path)
