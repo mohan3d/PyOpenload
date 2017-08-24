@@ -254,8 +254,8 @@ class OpenLoad(object):
         upload_url_response_json = self.upload_link(folder_id=folder_id, sha1=sha1, httponly=httponly)
         upload_url = upload_url_response_json['url']
 
-        response_json = requests.post(upload_url,
-                                      files={'upload_file': open(file_path, 'rb')}).json()
+        with open(file_path, 'rb') as f:
+            response_json = requests.post(upload_url, files={'upload_file': f}).json()
 
         self._check_status(response_json)
         return response_json['result']
