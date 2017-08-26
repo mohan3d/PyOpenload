@@ -2,6 +2,10 @@
 Examples
 ========
 
+An instance of OpenLoad is needed for all examples.
+
+.. literalinclude:: ../examples/base.py
+
 :samp:`username` and :samp:`key` can be found in `openload user settings <https://openload.co/account#usersettings>`_.
 
 Account
@@ -69,7 +73,7 @@ Upload File
 -----------
 
 .. literalinclude:: ../examples/upload_link.py
-   
+
 
 Remote Upload
 =============
