@@ -11,8 +11,8 @@ An instance of OpenLoad is needed for all examples.
 Account
 =======
 
-Account Infos
--------------
+Account Info
+------------
 
 Get everything account related (total used storage, reward, ...).
 
@@ -81,7 +81,7 @@ Remote Upload
 Add Remote Upload
 -----------------
 
-Upload lastest pyopenload documentation pdf.
+Upload latest pyopenload documentation pdf.
 
 .. literalinclude:: ../examples/remote_upload.py
 
