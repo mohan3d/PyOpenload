@@ -45,4 +45,4 @@ PyOpenload doesn't download given file id, but gives us direct download url in t
     # Process download url.
     download(direct_download_url)
 
-Actual download is done in :samp:`download` function (You must provide implementation of it).
+You must provide implementation of :samp:`solve_captcha` and :samp:`download` functions.
