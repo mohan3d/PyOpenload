@@ -24,9 +24,9 @@ All `API`_ features are implemented.
 
     from openload import OpenLoad
 
-    openload = OpenLoad('login', 'key')
+    ol = OpenLoad('login', 'key')
 
-    account_info = openload.account_info()
+    account_info = ol.account_info()
     print(account_info)
 
 
@@ -36,9 +36,9 @@ All `API`_ features are implemented.
 
     from openload import OpenLoad
 
-    openload = OpenLoad('login', 'key')
+    ol = OpenLoad('login', 'key')
 
-    uploaded_file_info = openload.upload_file('/home/username/file.txt')
+    uploaded_file_info = ol.upload_file('/home/username/file.txt')
     print(uploaded_file_info)
 
 
@@ -48,12 +48,12 @@ All `API`_ features are implemented.
 
     from openload import OpenLoad
 
-    openload = OpenLoad('login', 'key')
+    ol = OpenLoad('login', 'key')
 
     # Random file id.
     file_id = 'YMTqhQAuzVX'
 
-    file_info = openload.file_info(file_id)
+    file_info = ol.file_info(file_id)
     print(file_info)
 
 Documentation
