@@ -46,3 +46,7 @@ PyOpenload doesn't download given file id, but gives us direct download url in t
     download(direct_download_url)
 
 You must provide implementation of :samp:`solve_captcha` and :samp:`download` functions.
+
+
+Extend Pyopenload
+=================
