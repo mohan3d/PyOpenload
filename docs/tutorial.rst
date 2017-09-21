@@ -64,32 +64,23 @@ Install :samp:`requests-toolbelt`.
 
 .. code-block:: python
 
-    from __future__ import print_function
-    
-    import os
-
-    import requests
-    from openload import OpenLoad
-    from requests_toolbelt.multipart import encoder
-
-
     class MyOpenLoad(OpenLoad):
-        def upload_large_file(self, file_path, **kwargs):  
-
-            # Generate new upload url.     
-            response = self.upload_link(**kwargs)
-            upload_url = response['url']
-                        
-            upload_file = open(file_path, 'rb')        
-            _, file_name = os.path.split(file_path)
-            
+    def upload_large_file(self, file_path, **kwargs):        
+        response = self.upload_link(**kwargs)
+        upload_url = response['url']
+        
+        _, file_name = os.path.split(file_path)
+        
+        with open(file_path, 'rb') as upload_file:            
             data = encoder.MultipartEncoder({
                 "files": (file_name, upload_file, "application/octet-stream"),
             })
-            
+        
             headers = {"Prefer": "respond-async", "Content-Type": data.content_type}
-            
-            return requests.post(upload_url, headers=headers, data=data).json()
+            response_json = requests.post(upload_url, headers=headers, data=data).json()
+        
+        self._check_status(response_json)
+        return return response_json['result']
         
 
     ol = MyOpenLoad('login', 'key')
