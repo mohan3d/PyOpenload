@@ -11,6 +11,7 @@ Welcome to PyOpenload's documentation!
    :caption: Contents:
    
    overview
+   tutorial
    download
    install
    reference
