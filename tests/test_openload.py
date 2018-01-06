@@ -149,7 +149,7 @@ class TestOpenLoad(unittest.TestCase):
 
     def test_remote_upload_status(self):
         remote_upload_status_info = self.ol.remote_upload_status()
-        self.assertIsInstance(remote_upload_status_info, dict)
+        self.assertIsInstance(remote_upload_status_info, list)
 
 
 if __name__ == '__main__':
