@@ -3,7 +3,7 @@ PyOpenload |StarButton|
 
 python wrapper for `Openload.co`_ `API`_.
 
-|pypi| |format| |CodacyBadge| |license|
+|travis| |pypi| |format| |CodacyBadge| |license|
 
 Install
 -------
@@ -78,3 +78,6 @@ documentation is available at https://pyopenload.readthedocs.io/.
 
 .. |license| image:: https://img.shields.io/pypi/l/pyopenload.svg?maxAge=3600&style=flat-square
     :target: https://choosealicense.com/licenses/mit/
+    
+.. |travis| image:: https://img.shields.io/travis/mohan3d/PyOpenload.svg?maxAge=3600&style=flat-square
+    :target: https://travis-ci.org/mohan3d/PyOpenload
