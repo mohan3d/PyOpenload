@@ -5,9 +5,8 @@ import os
 import requests
 import requests_toolbelt
 
-from .api_exceptions import (BadRequestException, BandwidthUsageExceeded,
-                             FileNotFoundException, PermissionDeniedException,
-                             ServerErrorException,
+from .api_exceptions import (BadRequestException, BandwidthUsageExceeded, FileNotFoundException,
+                             PermissionDeniedException, TooManyRequestsException, ServerErrorException,
                              UnavailableForLegalReasonsException)
 
 
@@ -50,6 +49,8 @@ class OpenLoad(object):
             raise PermissionDeniedException(msg)
         elif status == 404:
             raise FileNotFoundException(msg)
+        elif status == 429:
+            raise TooManyRequestsException(msg)
         elif status == 451:
             raise UnavailableForLegalReasonsException(msg)
         elif status == 509:
