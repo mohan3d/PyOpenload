@@ -34,5 +34,5 @@ setup(
 
     keywords=['openload', 'wrapper', 'api', 'api client'],
     packages=find_packages(exclude=['docs', 'tests*']),
-    install_requires=['requests>=2.21.0', 'requests-toolbelt>=0.9.1'],
+    install_requires=['requests==2.18.3', 'requests-toolbelt==0.9.1'],
 )
