@@ -1,6 +1,9 @@
 from __future__ import absolute_import
 
+import os
+
 import requests
+import requests_toolbelt
 
 from .api_exceptions import (BadRequestException, BandwidthUsageExceeded,
                              FileNotFoundException, PermissionDeniedException,
@@ -254,8 +257,15 @@ class OpenLoad(object):
         upload_url_response_json = self.upload_link(folder_id=folder_id, sha1=sha1, httponly=httponly)
         upload_url = upload_url_response_json['url']
 
+        _, file_name = os.path.split(file_path)
+
         with open(file_path, 'rb') as f:
-            response_json = requests.post(upload_url, files={'upload_file': f}).json()
+            data = requests_toolbelt.MultipartEncoder({
+                "files": (file_name, f, "application/octet-stream"),
+            })
+
+            headers = {"Content-Type": data.content_type}
+            response_json = requests.post(upload_url, data=data, headers=headers).json()
 
         self._check_status(response_json)
         return response_json['result']
