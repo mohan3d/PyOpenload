@@ -12,4 +12,4 @@ install:
   - pip install pytest
 
 script:
-  - pytest
+  - pytest -k 'not test_list_folder and not test_upload_file_with_folder and not test_running_conversions_with_folder'
