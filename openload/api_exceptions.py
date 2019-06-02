@@ -10,6 +10,10 @@ class FileNotFoundException(Exception):
     pass
 
 
+class TooManyRequestsException(Exception):
+    pass
+
+
 class UnavailableForLegalReasonsException(Exception):
     pass
 
