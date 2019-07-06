@@ -14,13 +14,13 @@ class OpenLoad(object):
     api_base_url = 'https://api.openload.co/{api_version}/'
     api_version = '1'
 
-    def __init__(self, api_login, api_key, timeout=10.0):
+    def __init__(self, api_login, api_key, timeout=30.0):
         """Initializes OpenLoad instance with given parameters and formats api base url.
 
         Args:
             api_login (str): API Login found in openload.co
             api_key (str): API Key found in openload.co
-            timeout (float): timeout in seconds for all requests
+            timeout (float): timeout in seconds for all requests defaults to 30 seconds.
 
         Returns:
             None

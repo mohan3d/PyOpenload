@@ -10,7 +10,7 @@ with copen(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='pyopenload',
-    version='0.7',
+    version='0.8',
     description='Python wrapper for openload.co API',
     long_description=long_description,
     url='https://github.com/mohan3d/PyOpenload',
